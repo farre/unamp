@@ -24,11 +24,12 @@
       }
     }
 
-    url.innerText = `https://farre.github.io/unamp/t#${current}`;
+    let location = window.location;
+    url.innerText = `${window.location}t#${current}`;
   }
 
   async function copyCurrent() {
-    navigator.clipboard.writeText(`https://farre.github.io/unamp/t#${current}`);
+    navigator.clipboard.writeText(`${window.location}t#${current}`);
   }
 
   update();

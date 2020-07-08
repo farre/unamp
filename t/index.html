@@ -2,12 +2,15 @@
 <meta name="robots" content="noindex">
 <script>
   "use strict";
-  window.name = "unamp";
-  let url = window.location.hash.slice(1);
-  if (!url.startsWith("http://") && !url.startsWith("https://")) {
-    url = `https://${url}`
+  addEventListener("load", redirect,  {once: true});
+
+  function redirect() {
+    window.name = "unamp";
+    let url = window.location.hash.slice(1);
+    if (!url.startsWith("http://") && !url.startsWith("https://")) {
+      url = `https://${url}`
+    }
+    url = new URL(url);
+    window.open(url, "unamp", ["rel=noreferrer"]);
   }
-  console.log(url);
-  url = new URL(url);
-  window.open(url, "unamp", ["rel=noreferrer"]);
 </script>
