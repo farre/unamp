@@ -1,0 +1,12 @@
+<!doctype html>
+<script>
+  "use strict";
+  window.name = "unamp";
+  let url = window.location.hash.slice(1);
+  if (!url.startsWith("http://") && !url.startsWith("http://")) {
+    url = `https://${url}`
+  }
+  console.log(url);
+  url = new URL(url);
+  window.open(url, "unamp", ["rel=noreferrer"]);
+</script>
