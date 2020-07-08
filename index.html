@@ -1,0 +1,34 @@
+<!doctype html>
+<div><input id="unamp" type="text"></input></div>
+<div><input id="copy" type="button" value="Copy"></input> <tt id="url"></tt></div>
+<script>
+  let unamp = document.getElementById('unamp');
+  unamp.onchange = update;
+  unamp.onkeyup = update;
+  let copy = document.getElementById('copy');
+  copy.onclick = copyCurrent;
+
+  let url = document.getElementById('url');
+
+  const http = "http://"
+  const https = "https://"
+  let current = "";
+  function update() {
+    console.log("here")
+    let v = unamp.value;
+    current = v;
+    if (!http.startsWith(v) && !https.startsWith(v)) {
+      if (!current.startsWith(http) && !current.startsWith(https)) {
+        current = `https://${current}`
+      }
+    }
+
+    url.innerText = current;
+  }
+
+  async function copyCurrent() {
+    navigator.clipboard.writeText(`https://farre.github.io/unamp/t#${url.innerText}`);
+  }
+
+  update();
+</script>
